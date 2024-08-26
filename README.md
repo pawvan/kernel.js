@@ -17,7 +17,7 @@ Clone the Repository
 
 bash
 Copy code
-git clone 
+git clone https://github.com/pawanny/kernel.js.git
 cd kernel-js
 Open index.html
 
