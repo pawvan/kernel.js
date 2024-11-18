@@ -1,6 +1,8 @@
 const kernel = {
     folders: {
         '/': [],
+        '/folder1': [],
+        '/folder2': [],
     },
     commandHistory: [],
 
@@ -76,4 +78,3 @@ commandInput.addEventListener('keydown', function (e) {
         e.preventDefault();
     }
 });
-                        
