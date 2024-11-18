@@ -15,7 +15,7 @@ const kernel = {
     },
 
     listProcesses() {
-        return this.processes.map(p => `${p.name} (ID: ${p.id}, Status: ${p.status})`).join('\n');
+        return this.processes.map((p) => `${p.name} (ID: ${p.id}, Status: ${p.status})`).join('\n');
     },
 
     stopProcess(id) {
