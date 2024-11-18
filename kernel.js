@@ -6,7 +6,7 @@ const kernel = {
 
     startProcess(name) {
         const process = {
-            id: Date.now(), // Unique ID based on timestamp
+            id: Date.now(), 
             name: name,
             status: 'running',
         };
@@ -58,6 +58,6 @@ commandInput.addEventListener('keydown', function (e) {
         const response = kernel.handleCommand(command);
         output.textContent += `\n$ ${command}\n${response}`;
         commandInput.value = '';
-        e.preventDefault(); // Prevent default action
+        e.preventDefault(); 
     }
 });
