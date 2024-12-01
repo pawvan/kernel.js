@@ -1,4 +1,5 @@
 function resetKernel() {
+    // Reset kernel folders for each test
     kernel.folders = {
         '/': [],
         '/folder1': [],
@@ -7,19 +8,24 @@ function resetKernel() {
     kernel.commandHistory = [];
 }
 
+// Run your tests with the reset state
 function testKernel() {
     let output;
 
+    // Test 1: Start process1
     resetKernel();
     output = kernel.handleCommand('start / process1');
     console.assert(output.includes('Started process: process1'), `Test 1 Failed: ${output}`);
 
+    // Test 2: Start process2
     output = kernel.handleCommand('start / process2');
     console.assert(output.includes('Started process: process2'), `Test 2 Failed: ${output}`);
 
+    // Test 3: List processes in root folder
     output = kernel.handleCommand('list /');
     console.assert(output.includes('process1') && output.includes('process2'), `Test 3 Failed: ${output}`);
 
+    // Test 4: Stop process in the root folder
     const processId = kernel.folders['/'][0].id;
     output = kernel.handleCommand(`stop / ${processId}`);
     console.assert(output.includes('Stopped process'), `Test 4 Failed: ${output}`);

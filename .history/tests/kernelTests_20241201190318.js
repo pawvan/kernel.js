@@ -1,4 +1,5 @@
 function resetKernel() {
+    // Reset kernel folders for each test
     kernel.folders = {
         '/': [],
         '/folder1': [],

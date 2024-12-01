@@ -1,16 +1,6 @@
-function resetKernel() {
-    kernel.folders = {
-        '/': [],
-        '/folder1': [],
-        '/folder2': [],
-    };
-    kernel.commandHistory = [];
-}
-
 function testKernel() {
     let output;
 
-    resetKernel();
     output = kernel.handleCommand('start / process1');
     console.assert(output.includes('Started process: process1'), `Test 1 Failed: ${output}`);
 

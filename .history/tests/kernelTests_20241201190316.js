@@ -1,4 +1,5 @@
 function resetKernel() {
+    // Reset kernel folders for each test
     kernel.folders = {
         '/': [],
         '/folder1': [],
@@ -7,6 +8,7 @@ function resetKernel() {
     kernel.commandHistory = [];
 }
 
+// Run your tests with the reset state
 function testKernel() {
     let output;
 
