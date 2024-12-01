@@ -1,0 +1,32 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #1e1e1e;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+#container {
+    max-width: 600px;
+    margin: auto;
+}
+
+#output {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+}
+
+#commandInput {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    font-size: 16px;
+}
+
+#commandInput:focus {
+    outline: none;
+    border-color: #00ff00;
+}
