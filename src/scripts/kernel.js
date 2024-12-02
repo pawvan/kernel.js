@@ -70,7 +70,6 @@ const kernel = {
 
 const output = document.getElementById('output');
 const commandInput = document.getElementById('commandInput');
-
 commandInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
         const command = commandInput.value.trim();
