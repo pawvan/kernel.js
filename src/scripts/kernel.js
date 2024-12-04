@@ -1,3 +1,4 @@
+// kernel.js
 const kernel = {
     folders: {
         '/': [],
@@ -30,7 +31,9 @@ const kernel = {
             return `No processes in folder ${folder}.`;
         }
 
-        return this.folders[folder].map((p) => `${p.name} (ID: ${p.id}, Status: ${p.status})`).join('\n');
+        return this.folders[folder]
+            .map((p) => `${p.name} (ID: ${p.id}, Status: ${p.status})`)
+            .join('\n');
     },
 
     stopProcess(folder, id) {
@@ -47,7 +50,8 @@ const kernel = {
         switch (cmd) {
             case 'start':
                 const folder = args[0] || '/';
-                const process = this.startProcess(folder, args.slice(1).join(' '));
+                const processName = args.slice(1).join(' ') || 'Unnamed Process';
+                const process = this.startProcess(folder, processName);
                 return `Started process: ${process.name} (ID: ${process.id}) in folder ${folder}`;
             case 'list':
                 const listFolder = args[0] || '/';
@@ -60,8 +64,15 @@ const kernel = {
                     return `Stopped process with ID: ${args[1]} in folder ${stopFolder}`;
                 }
                 return 'Error: No folder or process ID provided.';
-            case 'k': // Handle 'k' command
-                return 'Error: Command not found.';
+            case 'clear':
+                return ''; // Clear the output screen
+            case 'help':
+                return `Available commands:
+                - start <folder> <process_name> : Start a process
+                - list <folder> : List processes in folder
+                - stop <folder> <process_id> : Stop a process
+                - clear : Clear the terminal
+                - help : Show available commands`;
             default:
                 return 'Error: Command not found.';
         }
@@ -70,12 +81,18 @@ const kernel = {
 
 const output = document.getElementById('output');
 const commandInput = document.getElementById('commandInput');
+
 commandInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
         const command = commandInput.value.trim();
         const response = kernel.handleCommand(command);
-        output.textContent += `\n$ ${command}\n${response}`;
-        commandInput.value = '';
-        e.preventDefault();
+        
+        if (response) {
+            output.textContent += `\n$ ${command}\n${response}`;
+        }
+
+        commandInput.value = ''; // Clear input field after execution
+        output.scrollTop = output.scrollHeight; // Auto-scroll to the bottom
+        e.preventDefault(); // Prevent page reload on enter
     }
 });
