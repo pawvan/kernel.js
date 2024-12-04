@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="../styles/stylus.css">
 </head>
 <body>
-    <div id="container">
+    <div id="terminal">
         <pre id="output"></pre>
-        <input type="text" id="commandInput" placeholder="Enter command" />
+        <div id="commandLine">
+            <span id="prompt">user@kernel:~$</span>
+            <input type="text" id="commandInput" placeholder="Enter command" autofocus />
+        </div>
     </div>
     <script src="../scripts/kernel.js"></script>
     <script src="../tests/kernelTests.js"></script>
